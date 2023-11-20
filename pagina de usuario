@@ -1,0 +1,55 @@
+// UserProfilePage.js
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, Image } from 'react-native';
+
+const UserProfilePage = ({ navigation }) => {
+  const [nome, setNome] = useState('');
+  const [idade, setIdade] = useState('');
+  const [endereco, setEndereco] = useState('');
+  const [imagemPerfil, setImagemPerfil] = useState('');
+
+  return (
+    <View>
+      <Text>Nome:</Text>
+      <TextInput
+        placeholder="Digite seu nome"
+        value={nome}
+        onChangeText={(text) => setNome(text)}
+      />
+
+      <Text>Idade:</Text>
+      <TextInput
+        placeholder="Digite sua idade"
+        value={idade}
+        onChangeText={(text) => setIdade(text)}
+        keyboardType="numeric"
+      />
+
+      <Text>Endereço:</Text>
+      <TextInput
+        placeholder="Digite seu endereço"
+        value={endereco}
+        onChangeText={(text) => setEndereco(text)}
+      />
+
+      <Text>URL da Imagem de Perfil:</Text>
+      <TextInput
+        placeholder="Digite a URL da imagem de perfil"
+        value={imagemPerfil}
+        onChangeText={(text) => setImagemPerfil(text)}
+      />
+
+      <Image
+        source={{ uri: imagemPerfil }}
+        style={{ width: 200, height: 200 }}
+      />
+
+      <Button
+        title="Ir para a Página Inicial"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+};
+
+export default UserProfilePage;
